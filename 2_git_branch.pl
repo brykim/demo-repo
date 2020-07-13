@@ -74,7 +74,7 @@ $input = <STDIN>;
 chomp $input;
 
 if ($input ne 'y') {
-      die ("\nError: 'y' is not entered!\n");
+      die ("\nError: 'y' is not entered!\n\n");
 }
 
 ################
@@ -96,7 +96,7 @@ $branch = <STDIN>;
 chomp $branch;
 
 if ($branch eq '') {
-      die ("\nError: No input provided!\n");
+      die ("\nError: No input provided!\n\n");
 }
 
 $CC=<<"CC";
@@ -126,8 +126,9 @@ printf "\n$SYS\n";
 system "$SYS";
 }
 
-else {
-      die ("\nError: Option 1 or 2 not selected!\n")
+print "$input\n";
+if (($input != 1) || ($input != 2)) {
+      die ("\nError: Option 1 or 2 not selected!\n\n")
 }
 
 ##############
