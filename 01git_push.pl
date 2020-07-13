@@ -108,12 +108,14 @@ Make sure the following are completed:
 Do you want to push the changes to github.com? (y/n)
 CC
 print $CC;
+$input = <STDIN>;
+chomp $input;
 
-if ($push eq '') {
+if ($input eq '') {
       die ("Error: No input provided!\n");
 }
 
-if ($push eq 'y') {
+if ($input eq 'y') {
 $SYS=<<"SYS";
 git push origin master
 SYS
