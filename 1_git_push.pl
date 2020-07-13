@@ -84,7 +84,7 @@ system "$SYS";
 $CC=<<"CC";
 Insert a message for commit (Otherwise Ctrl+C):
 CC
-print $CC;
+printf "\n$CC\n";
 $input = <STDIN>;
 chomp $input;
 
@@ -115,14 +115,13 @@ printf "$CC";
 }
 
 $CC=<<'CC';
-
 Make sure the following are completed:
     .gitignore
     README.md
 
 Do you want to push the changes to github.com? (y/n)
 CC
-print $CC;
+printf "\n$CC\n";
 $input = <STDIN>;
 chomp $input;
 
@@ -139,7 +138,7 @@ system "$SYS";
 $CC=<<"CC";
 Select the branch to push to:
 CC
-print $CC;
+printf "\n$CC\n";
 $input = <STDIN>;
 chomp $input;
 

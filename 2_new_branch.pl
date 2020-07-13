@@ -65,27 +65,70 @@ sub get_wrkdir {
 $timestamp = sprintf "%04d-%02d-%02d, %02d:%02d:%02d", $lt[5]+1900, $lt[4]+1, @lt[3,2,1,0];
 get_wrkdir;
 
+$CC=<<"CC";
+Are you in the master branch? (y/n)
+(Otherwise Ctrl+C):
+CC
+printf "\n$CC\n";
+$input = <STDIN>;
+chomp $input;
+
+if ($input ne 'y') {
+      die ("Error: 'y' is not entered!\n");
+}
+
 ################
 ## GIT BRANCH ##
 ################
 
-$CC=<<"CC";
-Insert a name for the new branch (Otherwise Ctrl+C):
-CC
-print $CC;
-$input = <STDIN>;
-chomp $input;
-
-if ($input eq '') {
-      die ("Error: No input provided!\n");
-}
-
 $SYS=<<"SYS";
-git checkout -b $input
 git branch
 SYS
 printf "\n$SYS\n";
 system "$SYS";
+
+$CC=<<"CC";
+Insert the name of the branch
+(Otherwise Ctrl+C):
+CC
+printf "\n$CC\n";
+$branch = <STDIN>;
+chomp $branch;
+
+if ($branch eq '') {
+      die ("Error: No input provided!\n");
+}
+
+$CC=<<"CC";
+Insert [1] to make the branch.
+Insert [2] to delete the branch.
+CC
+printf "\n$CC\n";
+$input = <STDIN>;
+chomp $input;
+
+if ($input == 1) {
+$SYS=<<"SYS";
+git checkout -b $branch
+git branch
+SYS
+printf "\n$SYS\n";
+system "$SYS";
+}
+
+if ($input == 2) {
+$SYS=<<"SYS";
+git branch -d $branch
+git push origin --delete $branch
+git branch
+SYS
+printf "\n$SYS\n";
+system "$SYS";
+}
+
+else {
+      die ("Error: Option 1 or 2 not selected!\n")
+}
 
 ##############
 ## END MAIN ##
