@@ -21,3 +21,5 @@ For more information on generating a new SSH key and adding it to the ssh-agent,
 To delete a repository go into the repository and go to Settings.
 
 At the bottom in Danger Zone, you can delete the repository.
+
+(Use your IU passphrase)
