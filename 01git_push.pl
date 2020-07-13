@@ -57,82 +57,61 @@ sub get_wrkdir {
       print "$wrkdir\n";
 }
 
-#######################
-## DEFAULT VARIABLES ##
-#######################
-
-@lt = localtime(time);
-$timestamp = sprintf "%04d-%02d-%02d, %02d:%02d:%02d", $lt[5]+1900, $lt[4]+1, @lt[3,2,1,0];
-
-############
-## INPUTS ##
-############
-$SYS=<<"SYS";
-git status
-SYS
-printf "\n$SYS\n";
-system "$SYS";
-
-$CC=<<"CC";
-Enter a message for commiting files:
-CC
-print $CC;
-$msg1 = <STDIN>;
-chomp $msg1;
-
-$CC=<<"CC";
-Add an optional extended description...
-CC
-print $CC;
-$msg2 = <STDIN>;
-chomp $msg2;
-
 ################
 ## MAIN BLOCK ##
 ################
 
+@lt = localtime(time);
+$timestamp = sprintf "%04d-%02d-%02d, %02d:%02d:%02d", $lt[5]+1900, $lt[4]+1, @lt[3,2,1,0];
 get_wrkdir;
 
-$CC=<<"CC";
-git status command shows me all of the
-files that were updated or created or
-deleted but haven't been saved in a
-commit yet 
-
-you need to use the git add command to
-track untracked files
-
-use a period at the end of git add which means
-you're telling it to track all of the
-files that are listed
-
-origin is the location of our git repository 
-master is the branch that we want to push to
-CC
+################
+## GIT COMMIT ##
+################
 
 $SYS=<<"SYS";
-git add .
-git commit -m "$msg1" -m "$msg2"
 git status
 SYS
 printf "\n$SYS\n";
 system "$SYS";
 
-############
-## INPUTS ##
-############
-
 $CC=<<"CC";
+Insert a message for commit (Otherwise Ctrl+C):
+CC
+print $CC;
+$input = <STDIN>;
+chomp $input;
+
+if ($input eq '') {
+      die ("Error: No input provided!\n");
+}
+
+$SYS=<<"SYS";
+git pull
+git rm -r --cached *
+git add .
+git commit -m "$input" -m "$wrkdir"
+git status
+SYS
+printf "\n$SYS\n";
+system "$SYS";
+
+##############
+## GIT PUSH ##
+##############
+
+$CC=<<'CC';
+Make sure the following are completed:
+    .gitignore
+    README.md
+
 Do you want to push the changes to github.com? (y/n)
 CC
-print "$CC";
-$push = <STDIN>;
-chomp $push;
+print $CC;
 
-$CC=<<"CC";
-origin is the location of our git repository 
-master is the branch that we want to push to
-CC
+if ($push eq '') {
+      die ("Error: No input provided!\n");
+}
 
 if ($push eq 'y') {
 $SYS=<<"SYS";
