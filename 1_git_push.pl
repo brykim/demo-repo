@@ -94,6 +94,7 @@ if ($input eq '') {
 
 $SYS=<<"SYS";
 git pull
+git reset
 git rm -r --cached *
 git add .
 git commit -m "$input" -m "$wrkdir"
