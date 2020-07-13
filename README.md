@@ -23,3 +23,13 @@ To delete a repository go into the repository and go to Settings.
 At the bottom in Danger Zone, you can delete the repository.
 
 (Use your IU passphrase)
+
+## Branching
+
+use git branch to display the branches and * tells you what branch you ar one.
+
+you can switch branches by using git checkout or you can make a new one by using -b.
+
+## Local Development
+
+1. Open index.html in your browser
