@@ -76,7 +76,7 @@ $msg1 = <STDIN>;
 chomp $msg1;
 
 $CC=<<"CC";
-Add an optional exteded description...
+Add an optional extended description...
 CC
 print $CC;
 $msg2 = <STDIN>;
@@ -113,17 +113,23 @@ SYS
 printf "\n$SYS\n";
 system "$SYS";
 
-$prompt=<<"CC";
+############
+## INPUTS ##
+############
+
+$CC=<<"CC";
 Do you want to push the changes to github.com? (y/n)
 CC
-print "$prompt";
+print "$CC";
+$push = <STDIN>;
+chomp $push;
 
 $CC=<<"CC";
 origin is the location of our git repository 
 master is the branch that we want to push to
 CC
 
-if ($prompt eq 'y') {
+if ($push eq 'y') {
 $SYS=<<"SYS";
 git push origin master
 SYS
