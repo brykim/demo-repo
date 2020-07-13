@@ -111,8 +111,8 @@ print $CC;
 $input = <STDIN>;
 chomp $input;
 
-if ($input eq '') {
-      die ("Error: No input provided!\n");
+if ($input ne 'y') {
+      die ("Error: 'y' is not entered!\n");
 }
 
 if ($input eq 'y') {
