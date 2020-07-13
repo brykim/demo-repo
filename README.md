@@ -15,3 +15,9 @@ Watch the [Git and GitHub for Beginners - Crash Course](https://youtu.be/RGOj5yH
 
 
 For more information on generating a new SSH key and adding it to the ssh-agent, visit [SSH Keys](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+
+## Delete a repository
+
+To delete a repository go into the repository and go to Settings.
+
+At the bottom in Danger Zone, you can delete the repository.
