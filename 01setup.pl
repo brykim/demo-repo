@@ -101,13 +101,35 @@ use a period at the end of git add which means
 you're telling it to track all of the
 files that are listed
 
+origin is the location of our git repository 
+master is the branch that we want to push to
 CC
+
 $SYS=<<"SYS";
 git add .
 git commit -m "$msg1" -m "$msg2"
+git push origin
 SYS
 printf "\n$SYS\n";
 system "$SYS";
+
+$prompt=<<"CC";
+Do you want to push the changes to github.com? (y/n)
+CC
+print "$prompt";
+
+$CC=<<"CC";
+origin is the location of our git repository 
+master is the branch that we want to push to
+CC
+
+if ($prompt eq 'y') {
+$SYS=<<"SYS";
+git push origin master
+SYS
+printf "\n$SYS\n";
+system "$SYS";      
+}
 
 ##############
 ## END MAIN ##
