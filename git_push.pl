@@ -66,6 +66,12 @@ $timestamp = sprintf "%04d-%02d-%02d, %02d:%02d:%02d", $lt[5]+1900, $lt[4]+1, @l
 get_wrkdir;
 
 ################
+## GIT IGNORE ##
+################
+
+read_file(".gitignore");
+
+################
 ## GIT COMMIT ##
 ################
 
@@ -99,6 +105,15 @@ system "$SYS";
 ##############
 ## GIT PUSH ##
 ##############
+
+print ".gitignore the following:\n";
+
+for $i (1 .. $row) {
+$CC=<<"CC";
+    $array[$i][1]
+CC
+printf "$CC";
+}
 
 $CC=<<'CC';
 Make sure the following are completed:
