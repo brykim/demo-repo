@@ -131,13 +131,24 @@ if ($input ne 'y') {
       die ("Error: 'y' is not entered!\n");
 }
 
-if ($input eq 'y') {
 $SYS=<<"SYS";
-git push origin master
+git branch
 SYS
 printf "\n$SYS\n";
-system "$SYS";      
-}
+system "$SYS";
+
+$CC=<<"CC";
+Select the branch to push to:
+CC
+print $CC;
+$input = <STDIN>;
+chomp $input;
+
+$SYS=<<"SYS";
+git push -u origin $input
+SYS
+printf "\n$SYS\n";
+system "$SYS";
 
 ##############
 ## END MAIN ##

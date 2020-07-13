@@ -69,12 +69,6 @@ get_wrkdir;
 ## GIT BRANCH ##
 ################
 
-$SYS=<<"SYS";
-git branch
-SYS
-printf "\n$SYS\n";
-system "$SYS";
-
 $CC=<<"CC";
 Insert a name for the new branch (Otherwise Ctrl+C):
 CC
@@ -88,6 +82,7 @@ if ($input eq '') {
 
 $SYS=<<"SYS";
 git checkout -b $input
+git branch
 SYS
 printf "\n$SYS\n";
 system "$SYS";

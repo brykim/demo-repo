@@ -33,3 +33,7 @@ you can switch branches by using git checkout or you can make a new one by using
 ## Local Development
 
 1. Open index.html in your browser
+
+## Miscelleneous
+
+Modify .bashrc to show the branch in the terminal.
