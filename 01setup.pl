@@ -67,6 +67,11 @@ $timestamp = sprintf "%04d-%02d-%02d, %02d:%02d:%02d", $lt[5]+1900, $lt[4]+1, @l
 ############
 ## INPUTS ##
 ############
+$SYS=<<"SYS";
+git status
+SYS
+printf "\n$SYS\n";
+system "$SYS";
 
 $CC=<<"CC";
 Enter a message for commiting files:
@@ -108,7 +113,7 @@ CC
 $SYS=<<"SYS";
 git add .
 git commit -m "$msg1" -m "$msg2"
-git push origin
+git status
 SYS
 printf "\n$SYS\n";
 system "$SYS";
