@@ -89,7 +89,7 @@ $input = <STDIN>;
 chomp $input;
 
 if ($input eq '') {
-      die ("Error: No input provided!\n");
+      die ("\nError: No input provided!\n");
 }
 
 $SYS=<<"SYS";
@@ -126,7 +126,7 @@ $input = <STDIN>;
 chomp $input;
 
 if ($input ne 'y') {
-      die ("Error: 'y' is not entered!\n");
+      die ("\nError: 'y' is not entered!\n");
 }
 
 $SYS=<<"SYS";
