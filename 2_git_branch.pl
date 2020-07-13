@@ -126,7 +126,6 @@ printf "\n$SYS\n";
 system "$SYS";
 }
 
-print "$input\n";
 if ($input < 1 or $input > 2) {
       die ("\nError: Option 1 or 2 not selected!\n\n");
 }
